@@ -2,6 +2,7 @@ package by.sergel.nonlinear.entity;
 
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -11,6 +12,8 @@ public class Entity {
     private int S;
     private int D;
     private int n;
+    private List<Integer> price;
+    private List<Integer> quantity;
 
     public int getH() {
         return h;
@@ -44,6 +47,22 @@ public class Entity {
         this.n = n;
     }
 
+    public List<Integer> getPrice() {
+        return price;
+    }
+
+    public void setPrice(List<Integer> price) {
+        this.price = price;
+    }
+
+    public List<Integer> getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(List<Integer> quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,11 +71,25 @@ public class Entity {
         return h == entity.h &&
                 S == entity.S &&
                 D == entity.D &&
-                n == entity.n;
+                n == entity.n &&
+                Objects.equals(price, entity.price) &&
+                Objects.equals(quantity, entity.quantity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(h, S, D, n);
+        return Objects.hash(h, S, D, n, price, quantity);
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "h=" + h +
+                ", S=" + S +
+                ", D=" + D +
+                ", n=" + n +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }

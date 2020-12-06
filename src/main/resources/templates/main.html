@@ -15,30 +15,34 @@
     <div>
         <div th:replace="nav :: nav"></div>
     </div>
-    <div>
-        <div>
-            <label for="countAll">Demand for the year </label><input id="countAll" name="countAll" type="text"/>
-            <label for="orderCost">Order processing costs </label><input id="orderCost" name="orderCost" type="text"/>
-            <label for="incomeDeposit">Income on deposits </label><input id="incomeDeposit" name="incomeDeposit" type="text"/>
-        </div>
-        <div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Number of goods</th>
-                    <th scope="col">Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="idx : ${#numbers.sequence(1, 3)}">
-                    <th scope="row" th:text="${idx}"></th>
-                    <td><input type="text" th:name="${'number' + idx}" /></td>
-                    <td><input type="text" th:name="${'price' + idx}" /></td>
-                </tr>
-            </table>
-        </div>
 
+    <div>
+        <form method="post" action="init/" >
+            <div>
+                <label for="D">Demand for the year </label><input id="D" name="D" type="text"/>
+                <label for="S">Order processing costs </label><input id="S" name="S" type="text"/>
+                <label for="h">Income on deposits </label><input id="h" name="h" type="text"/>
+            </div>
+            <div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Number of goods</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="idx : ${#numbers.sequence(1, 3)}">
+                        <th scope="row" th:text="${idx}"></th>
+                        <td><input type="text" th:name="${'count' + idx}" /></td>
+                        <td><input type="text" th:name="${'price' + idx}" /></td>
+                    </tr>
+                </table>
+            </div>
+            <span th:if="${entity != null}" th:text="${entity}"></span>
+            <button type="submit" class="btn btn-info">Result</button>
+        </form>
     </div>
 
 </body>
