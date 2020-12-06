@@ -16,8 +16,8 @@ public class MainController {
     private MainServiceImpl mainService;
 
     @GetMapping
-    public String getMain(){
-
+    public String getMain(Model model){
+        model.addAttribute("entity", mainService.getData());
         return "main";
     }
 
@@ -25,6 +25,6 @@ public class MainController {
     public String init(@RequestParam Map<String, String> form, Model model){
         mainService.setData(form);
         model.addAttribute("entity", mainService.getData());
-        return "main";
+        return "redirect:/";
     }
 }

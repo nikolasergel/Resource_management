@@ -14,11 +14,11 @@ public class MainServiceImpl implements MainService {
     @Autowired
     private EntityRepository entityRepository;
 
-    public String getData(){
-        return entityRepository.getEntity().toString();
+    public Entity getData(){
+        return entityRepository.getEntity();
     }
 
-    public void setData(Map<String, String> form) {
+    public void setData(Map<String, String > form) {
         Entity entity = this.entityRepository.getEntity();
 
         entity.setD(Integer.parseInt(form.get("D")));
@@ -28,7 +28,7 @@ public class MainServiceImpl implements MainService {
         List<Integer> qauntity = new ArrayList<>();
         for(int i = 1; i <= 3; i++){
             price.add(Integer.parseInt(form.get("price" + i)));
-            qauntity.add(Integer.parseInt(form.get("count" + i)));
+            qauntity.add(Integer.parseInt(form.get("quantity" + i)));
         }
         entity.setPrice(price);
         entity.setQuantity(qauntity);
