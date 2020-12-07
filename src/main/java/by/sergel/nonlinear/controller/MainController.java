@@ -21,10 +21,11 @@ public class MainController {
         return "main";
     }
 
-    @PostMapping("init/")
+    @PostMapping("/calculate")
     public String init(@RequestParam Map<String, String> form, Model model){
         mainService.setData(form);
         model.addAttribute("entity", mainService.getData());
-        return "redirect:/";
+        model.addAttribute("calc", mainService.getCalculations());
+        return "calculations";
     }
 }
